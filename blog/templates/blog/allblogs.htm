@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% load staticfiles %}
 	<head>
 		<meta charset="utf-8" />
 		<meta
@@ -13,7 +12,7 @@
 			content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
 		/>
 		<meta name="generator" content="Jekyll v3.8.5" />
-		<title>Joseph's Portfolio</title>
+		<title>Album example · Bootstrap</title>
 
 		<!-- Bootstrap core CSS -->
 		<link
@@ -37,7 +36,7 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<a class="navbar-brand" href="/">Joseph DiPeri</a>
+				<a class="navbar-brand" href="#">Joseph DiPeri</a>
 				<button
 					class="navbar-toggler"
 					type="button"
@@ -52,50 +51,29 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item"><a class="nav-link" href="#">Linked In</a></li>
-						<li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-						<li class="nav-item">
-							<a
-								class="nav-link"
-								target="__blank"
-								href="{% static 'jdiperi_resume.pdf' %}"
-								>Resume</a
-							>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Blog</a>
 						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Resume</a></li>
 					</ul>
 				</div>
 			</nav>
 		</header>
 
 		<main role="main">
-			<section class="jumbotron text-center">
-				<div class="container">
-					<h1 class="jumbotron-heading">Hi, I'm Joey.</h1>
-					<p class="lead text-muted">
-						Making this Django website to expand my horizons!
-					</p>
-					<p>
-						<a href=" mailto:jdiperi88@gmail.com" class="btn btn-primary my-2"
-							>Email Me!</a
-						>
-					</p>
-					<img src="{% static 'jdiperi.jpg'%}" alt="" width="300px" />
-				</div>
-			</section>
-			<div class="album py-5 bg-light">
-				<div class="container">
-					<div class="row">
-						{% for job in jobs.all%}
-						<div class="col-md-4">
-							<div class="card mb-4 shadow-sm">
-								<img class="card-img-top" src="{{ job.image.url }}" alt="" />
-								<div class="card-body">
-									<p class="card-text">{{ job.summary }}</p>
-								</div>
-							</div>
-						</div>
-						{% endfor %}
-					</div>
-				</div>
+			<div class="container">
+				<h1 class="text-center pt-3">Welcome to Joey's Blog</h1>
+				<br />
+				<h2>Latest Posts</h2>
+				<hr />
+				{% for blog in blogs.all%} <br />
+				<a href="">
+					<h3>{{ blog.title }}</h3></a
+				>
+				{{ blog.pub_date_pretty }} <br />
+				<img src="{{ blog.image.url }}" alt="" width="400px" /><br />
+				<p>{{ blog.summary }}</p>
+				{% endfor%}
 			</div>
 		</main>
 
